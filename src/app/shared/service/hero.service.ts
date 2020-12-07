@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class HeroService {
 
 
-  apiUrl = 'http://ec2-3-17-139-218.us-east-2.compute.amazonaws.com';
+  apiUrl = 'https://aw-hero-api.herokuapp.com/heros';
 
   httpOptions = {
     headers: new HttpHeaders({
