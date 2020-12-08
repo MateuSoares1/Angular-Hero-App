@@ -1,14 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Hero } from '../model/hero.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroService {
 
-
-  apiUrl = 'https://aw-hero-api.herokuapp.com/heros';
+  readonly HEROS_URL = environment.rootServiceURL + '/heros';  
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -19,9 +20,8 @@ export class HeroService {
   constructor(private httpCliente: HttpClient) { }
 
 
-  public getHeros(): Observable<any[]> {
-    var resul = this.httpCliente.get<any[]>(this.apiUrl); 
-    debugger;
-    return resul;
+  public getHeros(): Observable<Hero[]> {
+    var result = this.httpCliente.get<Hero[]>(this.HEROS_URL);
+    return result;
   }
 }
